@@ -1,13 +1,13 @@
 ---
 name: chatrpg-team-lead
-description: Coordinate ChatRPG work in 组长模式/team-lead mode. Use when the user selects or asks for 组长模式, team lead mode, worker orchestration, Claude Code delegation, multi-agent implementation, parallel task breakdown, review-and-revision loops, or coordinated validation in the <repo-root> repository.
+description: Coordinate AiChatTrpg work in 组长模式/team-lead mode. Use when the user selects or asks for 组长模式, team lead mode, worker orchestration, Claude Code delegation, multi-agent implementation, parallel task breakdown, review-and-revision loops, or coordinated validation in the <repo-root> repository.
 ---
 
-# ChatRPG Team Lead
+# AiChatTrpg Team Lead
 
 ## Overview
 
-Use this skill as the operating playbook for ChatRPG 组长模式. It helps Codex
+Use this skill as the operating playbook for AiChatTrpg 组长模式. It helps Codex
 break work into owned tasks, brief workers, review their output, and verify the
 final result while preserving the repository-level hard gates in `AGENTS.md`.
 
@@ -22,7 +22,7 @@ Within this skill, "worker", "小兵", "subagent", "delegate", "parallel agent",
 and "跟你的小兵讨论" mean Claude Code workers using the selected worker backend.
 The default backend is `runclaude` in a TTY. Approved low-observability Claude
 Code backends may be used when the criteria in `AGENTS.md` are met. Do not call
-Codex `spawn_agent` or use Codex subagents as ChatRPG 组长模式 workers unless the
+Codex `spawn_agent` or use Codex subagents as AiChatTrpg 组长模式 workers unless the
 user explicitly requests that exception in the current turn and Codex states
 that it is outside normal worker routing.
 
@@ -157,7 +157,7 @@ already active, use the short reminder from `AGENTS.md` when useful.
 
 ## Long-Horizon Epic Pattern
 
-Use native Codex orchestration for generic continuity and keep ChatRPG-specific
+Use native Codex orchestration for generic continuity and keep AiChatTrpg-specific
 rules in this skill.
 
 - `/plan` owns reviewable decomposition; `/goal`, if available, owns keeping the
@@ -253,7 +253,7 @@ The path for unacceptable worker output is: revision dispatch, fresh worker,
 verification worker, or — with explicit in-turn user permission — a narrowly
 scoped direct edit. Impatience and "almost there" are not permission.
 
-## ChatRPG Task Splitting
+## AiChatTrpg Task Splitting
 
 - Engine/runtime: `backend/agents/trpg/`, check engines, Dice IR, runtime
   markers, memory, retrieval, and provider adapters.
@@ -284,7 +284,7 @@ are independent enough to run in parallel.
   latest Opus, stays in the repo root, follows the marker, and writes the
   handoff report.
 - Use `cc-background`, `cc-agent-view`, or `cc-internal-subagents` only when
-  the task satisfies the low-observability criteria in `AGENTS.md` and ChatRPG
+  the task satisfies the low-observability criteria in `AGENTS.md` and AiChatTrpg
   documents the Claude Code backend route.
 - `cc-internal-subagents` means a parent Claude Code worker remains
   accountable. It may permit primary implementation subagents only when the
@@ -336,7 +336,7 @@ and final handoff templates. Load it when assigning or revising worker tasks.
 ## Validation Guide
 
 Use `references/validation-matrix.md` as the V0-V4 vocabulary and
-`references/chatrpg-validation-recipes.md` for ChatRPG-specific acceptance
+`references/chatrpg-validation-recipes.md` for AiChatTrpg-specific acceptance
 recipes. The matrix is a guide to evidence, not permission for the lead to edit
 code-affecting files.
 

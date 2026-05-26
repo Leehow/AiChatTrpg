@@ -5,7 +5,7 @@ POST /api/modules/parse  — multipart upload (PDF / DOCX / PPTX / XLSX
 it via the model pool's default LLM (heuristic fallback if no model
 is configured).
 
-After text extraction, ChatRPG starts the shared semantic parser in the
+After text extraction, AiChatTrpg starts the shared semantic parser in the
 background: structure, playable units, GM briefing, and appendix lookup
 entries. Upload-time TOC is local/heuristic only; the semantic parser owns
 the expensive LLM structure pass.

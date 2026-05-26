@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "ChatRPG",
+    "title": "AiChatTrpg",
     "description": "Open-source AI Game Master for tabletop RPGs",
     "version": "0.1.0-alpha"
   },

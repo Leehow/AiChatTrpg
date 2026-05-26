@@ -9,7 +9,7 @@ explicitly asks to test one.
 - Ruleset concept: light folk-horror investigation, simpler than Call of
   Cthulhu.
 - Player/user persona: ordinary TRPG fan, not a developer, does not know
-  ChatRPG internals.
+  AiChatTrpg internals.
 - Repair loop: discover that a generated character skill label and a dice
   check input do not align; repair through natural language; prove the fixed
   version is used.

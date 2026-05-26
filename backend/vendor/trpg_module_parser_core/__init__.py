@@ -1,4 +1,4 @@
-"""Shared TRPG module parser core used by ChatLab and ChatRPG."""
+"""Shared TRPG module parser core used by ChatLab and AiChatTrpg."""
 
 from .core import (
     ANCHOR_TO_MODULE,

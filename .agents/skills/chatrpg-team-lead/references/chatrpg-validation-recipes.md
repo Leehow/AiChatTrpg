@@ -1,4 +1,4 @@
-# ChatRPG Validation Recipes
+# AiChatTrpg Validation Recipes
 
 Use these recipes to choose validation levels. They are project-specific
 acceptance guidance; they do not override `AGENTS.md`, `CLAUDE.md`, or the

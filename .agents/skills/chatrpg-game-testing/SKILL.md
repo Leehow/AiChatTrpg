@@ -1,14 +1,14 @@
 ---
 name: chatrpg-game-testing
-description: "Design, review, or run human-style long-flow gameplay tests for ChatRPG sessions: browser chat, natural player actions, streamed GM replies, dice/check runtime, scene changes, memory, NPC/state updates, HP/stress/condition changes, reload recovery, chapter completion, evidence packs, and gameplay feedback collection. Use when the user asks for game testing, gameplay E2E, human-like player simulation, long campaign/session testing, or TRPG runtime validation."
+description: "Design, review, or run human-style long-flow gameplay tests for AiChatTrpg sessions: browser chat, natural player actions, streamed GM replies, dice/check runtime, scene changes, memory, NPC/state updates, HP/stress/condition changes, reload recovery, chapter completion, evidence packs, and gameplay feedback collection. Use when the user asks for game testing, gameplay E2E, human-like player simulation, long campaign/session testing, or TRPG runtime validation."
 ---
 
-# ChatRPG Game Testing
+# AiChatTrpg Game Testing
 
 ## Overview
 
 Use this skill to design or assess realistic long-flow gameplay tests for
-ChatRPG. The goal is to prove that a normal player can play through meaningful
+AiChatTrpg. The goal is to prove that a normal player can play through meaningful
 session continuity with vague actions and human habits, not that one scripted
 turn works.
 

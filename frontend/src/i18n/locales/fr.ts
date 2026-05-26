@@ -524,7 +524,7 @@ export const fr: Record<MessageKey, string> = {
   diceModalRoll: "Lancer",
   diceModalSend: "Envoyer",
 
-  loginTitle: "Se connecter à ChatRPG",
+  loginTitle: "Se connecter à AiChatTrpg",
   loginSubtitle: "Utilisez un compte admin local ou un compte de test.",
   loginTab: "Connexion",
   loginUsername: "Nom d’utilisateur",
@@ -537,7 +537,7 @@ export const fr: Record<MessageKey, string> = {
   loginHint: "Les installations locales utilisent toujours auth.json. Les tests hébergés utilisent des comptes invités.",
   registerTab: "S’inscrire",
   registerTitle: "Créer un compte de test",
-  registerSubtitle: "Utilisez un code d’invitation pour rejoindre cette plateforme de test ChatRPG.",
+  registerSubtitle: "Utilisez un code d’invitation pour rejoindre cette plateforme de test AiChatTrpg.",
   registerName: "Nom affiché",
   registerNamePlaceholder: "Facultatif",
   registerInviteCode: "Code d’invitation",

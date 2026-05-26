@@ -56,7 +56,7 @@ async def load_book_views(
     """
     if get_full_markdown_for_files is None:
         raise ValueError(
-            "ChatRPG does not provide ChatLab file_id markdown loading; "
+            "AiChatTrpg does not provide ChatLab file_id markdown loading; "
             "pass normalized markdown directly instead.",
         )
     import asyncio

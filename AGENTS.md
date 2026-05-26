@@ -5,7 +5,7 @@ core coding rules before making repository changes.
 
 ## External Showcase Environment
 
-As of 2026-05-26, ChatRPG has a small public showcase deployment that is
+As of 2026-05-26, AiChatTrpg has a small public showcase deployment that is
 separate from the V1 local-first product scope in `CLAUDE.md`.
 
 - Public domains: `https://aichattrpg.com/`,
@@ -29,11 +29,11 @@ separate from the V1 local-first product scope in `CLAUDE.md`.
 - Test-platform secrets and generated admin/invite credentials live only on the
   server. Do not commit, paste, or copy those values into docs or prompts.
 - Useful validation: from a clean network path, both public HTTPS URLs should
-  load the title `ChatRPG - Open-source AI-GM TRPG engine`. On the user's Mac,
+  load the title `AiChatTrpg - Open-source AI-GM TRPG engine`. On the user's Mac,
   Surge may otherwise route this domain through the Tokyo proxy path and hit
   stale DNS/fake-IP state; keep these public domains on `DIRECT` in private
   local proxy config when needed. The test platform should load the title
-  `ChatRPG`, expose
+  `AiChatTrpg`, expose
   `/api/auth/registration-status`, and require invite-code registration.
 - Old Gemini relay note: the obsolete Cloudflare Workers named `gemini` and
   `geminii` were removed during this setup. Do not assume a public Gemini
@@ -76,7 +76,7 @@ mode is already active.
 Long activation notice:
 
 ```text
-已进入 ChatRPG 组长模式。
+已进入 AiChatTrpg 组长模式。
 
 我会作为组长协调工作，而不是默认亲自改代码。
 
@@ -136,9 +136,9 @@ the intermediate process, the lead may select an approved low-observability
 Claude Code backend instead of opening another terminal window:
 
 - `cc-background`: a Claude Code background worker/session managed by a
-  documented ChatRPG launch path.
+  documented AiChatTrpg launch path.
 - `cc-agent-view`: a Claude Code Agent View worker/session managed by a
-  documented ChatRPG UI or command path.
+  documented AiChatTrpg UI or command path.
 - `cc-internal-subagents`: an existing Claude Code parent worker remains
   accountable and may use Claude Code subagents internally.
 
@@ -182,7 +182,7 @@ summarize subagent count, scopes, outcomes, and verification in the handoff.
 
 ### 组长模式 Optional tmux Layer
 
-`tmux` may be used as an optional terminal management layer for ChatRPG
+`tmux` may be used as an optional terminal management layer for AiChatTrpg
 组长模式. It is only a session/window manager for the `tty` Claude Code worker
 backend; it is not a replacement for `runclaude`, not a Codex subagent route,
 and not a permission to use a different repository root, model tier, scope, or
@@ -213,7 +213,7 @@ as acceptance evidence by itself. The lead still has to read the worker's
 complete final response and full `.tmp/team-lead/` handoff report before
 accepting or summarizing the work.
 
-Do not use Claude Code's `--tmux --worktree` mode as the default ChatRPG
+Do not use Claude Code's `--tmux --worktree` mode as the default AiChatTrpg
 worker route. It creates a different worktree-oriented workflow and should only
 be used after the user explicitly approves a worktree-based worker plan for the
 current task.
@@ -224,7 +224,7 @@ In this repository's 组长模式, "小兵", "worker", "subagent", "delegate",
 "parallel agent", and "跟你的小兵讨论" mean Claude Code workers using the
 backend selected by the Worker Backend Selection policy. The default backend is
 the `runclaude` TTY route. Codex subagents are not the default worker
-implementation for ChatRPG 组长模式.
+implementation for AiChatTrpg 组长模式.
 
 Before any delegation, worker discussion, parallel review, or worker dispatch,
 Codex must run this tool-choice preflight:
@@ -675,7 +675,7 @@ the exact user-visible flow has been verified in the running app, including the
 correct port, backend/database target, and visible UI state. If that validation
 is blocked, say what blocked it instead of calling the bug fixed.
 
-Use the ChatRPG V0-V4 validation matrix in
+Use the AiChatTrpg V0-V4 validation matrix in
 `.agents/skills/chatrpg-team-lead/references/validation-matrix.md` for
 code-affecting work. In short: V0 is static/project-rule guard, V1 is
 deterministic unit or golden behavior, V2 is API/contract/build evidence, V3 is
@@ -692,7 +692,7 @@ do not echo, summarize, cache, or forward its contents.
 
 ### Human-Like Long-Flow Testing Discipline
 
-ChatRPG's rule-editor and gameplay quality cannot be accepted from one short
+AiChatTrpg's rule-editor and gameplay quality cannot be accepted from one short
 smoke case, one hand-picked example, or prompts that reveal internal system
 knowledge. When the user asks to design, run, or review long-flow tests for
 ruleset creation, rule editing, dice/check design, room creation, chat gameplay,
@@ -755,7 +755,7 @@ as analysis-only by default.
   analysis, proceed with the smallest scoped change that addresses the
   confirmed issue.
 
-## ChatRPG Safety Notes
+## AiChatTrpg Safety Notes
 
 - Preserve the engine/app boundary described in `CLAUDE.md`: engine code should
   not depend on FastAPI, ORM models, React, or app-layer concerns.

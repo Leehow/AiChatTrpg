@@ -1,11 +1,11 @@
-# Contributing To ChatRPG
+# Contributing To AiChatTrpg
 
-Thanks for taking a look. ChatRPG is pre-alpha and moving quickly, so small,
+Thanks for taking a look. AiChatTrpg is pre-alpha and moving quickly, so small,
 focused contributions are easiest to review.
 
 ## Project Shape
 
-ChatRPG is local-first by default. The hosted `test.aichattrpg.com` deployment
+AiChatTrpg is local-first by default. The hosted `test.aichattrpg.com` deployment
 is an invite-only test platform, not a managed SaaS product.
 
 The repo currently contains both:
@@ -78,7 +78,7 @@ npm run gen:api
 
 ## Licensing
 
-ChatRPG is Apache-2.0. Contributions submitted through issues, pull requests,
+AiChatTrpg is Apache-2.0. Contributions submitted through issues, pull requests,
 or repository discussions are accepted under the same license unless explicitly
 marked otherwise.
 

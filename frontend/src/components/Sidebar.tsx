@@ -12,7 +12,7 @@ export function Sidebar() {
               aria-hidden="true"
               className="h-7 w-7 shrink-0 object-contain"
             />
-            <span className="truncate">ChatRPG</span>
+            <span className="truncate">AiChatTrpg</span>
           </h1>
           <LanguageSwitcher />
         </div>

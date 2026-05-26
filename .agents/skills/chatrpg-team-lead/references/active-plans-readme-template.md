@@ -13,7 +13,7 @@ the tables incrementally as plans open, change status, or archive.
 ```markdown
 # Active Plans Ledger
 
-This directory holds durable Markdown ledgers for multi-turn ChatRPG 组长模式
+This directory holds durable Markdown ledgers for multi-turn AiChatTrpg 组长模式
 initiatives that need on-disk Done / Not Done memory. Each plan lives in
 `docs/active-plans/<work_id>.md` and is created from
 `.agents/skills/chatrpg-team-lead/references/active-plan-template.md`.

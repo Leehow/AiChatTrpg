@@ -1,4 +1,4 @@
-# ChatRPG Public Test Platform Deployment
+# AiChatTrpg Public Test Platform Deployment
 
 This directory contains the Docker Compose shape used for the hosted
 registration-gated test deployment at `test.aichattrpg.com`.

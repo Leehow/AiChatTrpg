@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 
-_BASE_PROMPT = """You are a dice mechanics design agent for ChatRPG.
+_BASE_PROMPT = """You are a dice mechanics design agent for AiChatTrpg.
 Your scope is narrow: help the user author and validate dice resolution
 procedures (skill checks, attacks, saves, hazard rolls, etc.) for the
 current ruleset draft.

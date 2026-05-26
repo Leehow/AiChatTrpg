@@ -551,7 +551,7 @@ export const en = {
   diceModalSend: "Send",
 
   // Auth
-  loginTitle: "Sign in to ChatRPG",
+  loginTitle: "Sign in to AiChatTrpg",
   loginSubtitle: "Use your local admin or test-platform account.",
   loginTab: "Sign in",
   loginUsername: "Username",
@@ -564,7 +564,7 @@ export const en = {
   loginHint: "Local installs still use auth.json. Hosted tests use invited accounts.",
   registerTab: "Register",
   registerTitle: "Create a test account",
-  registerSubtitle: "Use an invite code to join this ChatRPG test platform.",
+  registerSubtitle: "Use an invite code to join this AiChatTrpg test platform.",
   registerName: "Display name",
   registerNamePlaceholder: "Optional",
   registerInviteCode: "Invite code",

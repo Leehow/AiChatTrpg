@@ -1,15 +1,15 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working in the ChatRPG repository.
+This file provides guidance to Claude Code when working in the AiChatTrpg repository.
 
 ## Project Vision
 
-ChatRPG is an **open-source LLM-GM-based TRPG system** — both an **engine** that other developers can embed in their own products, and a **complete out-of-the-box application** so players can install it and start a session immediately.
+AiChatTrpg is an **open-source LLM-GM-based TRPG system** — both an **engine** that other developers can embed in their own products, and a **complete out-of-the-box application** so players can install it and start a session immediately.
 
 - **Path**: `<repo-root>`
 - **License**: Apache-2.0
 - **Status**: Pre-alpha, active development.
-- **Origin**: The TRPG game-loop pattern was originally prototyped inside the closed-source ChatLab project. ChatRPG is the clean-room reimplementation, now an **independent project**. ChatLab maintains its own fork; there is no sync relationship.
+- **Origin**: The TRPG game-loop pattern was originally prototyped inside the closed-source ChatLab project. AiChatTrpg is the clean-room reimplementation, now an **independent project**. ChatLab maintains its own fork; there is no sync relationship.
 
 ### Target audience
 

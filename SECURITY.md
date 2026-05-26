@@ -1,6 +1,6 @@
 # Security Policy
 
-ChatRPG is pre-alpha software. Please treat both local installs and hosted
+AiChatTrpg is pre-alpha software. Please treat both local installs and hosted
 test deployments as experimental.
 
 ## Supported Versions

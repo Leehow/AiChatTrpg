@@ -1,4 +1,4 @@
-"""Hardening helpers for ChatRPG NPC Runtime V2.
+"""Hardening helpers for AiChatTrpg NPC Runtime V2.
 
 These modules are designed to be copied into ``backend/services/trpg_npc``
 and wired into the existing runtime adapter, action board, persistence and

@@ -1,4 +1,4 @@
-# ChatRPG Memory Runtime E2E
+# AiChatTrpg Memory Runtime E2E
 
 Browser-level memory runtime checks live here. The AI/browser agent may operate
 the page like a player, but the pass/fail decision comes from API/runtime

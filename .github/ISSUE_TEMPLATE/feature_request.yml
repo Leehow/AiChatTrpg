@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ChatRPG is pre-alpha and local-first. Hosted test-platform requests are
+        AiChatTrpg is pre-alpha and local-first. Hosted test-platform requests are
         welcome, but please separate product ideas from deployment assumptions.
   - type: dropdown
     id: area

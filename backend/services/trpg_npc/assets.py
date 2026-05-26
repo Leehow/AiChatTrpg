@@ -1,4 +1,4 @@
-"""NPC presentation assets for ChatRPG.
+"""NPC presentation assets for AiChatTrpg.
 
 New NPCs should become renderable characters, not bare memory rows. This
 module assigns stable TTS voices from the configured character-dialogue

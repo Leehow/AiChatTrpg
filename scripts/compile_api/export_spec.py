@@ -59,7 +59,7 @@ def export_sse_events() -> Path:
     ]
     schema = {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "title": "ChatRPG SSE Event",
+        "title": "AiChatTrpg SSE Event",
         "description": "Discriminated union by `type` field.",
         "discriminator": {"propertyName": "type"},
         "oneOf": [evt.model_json_schema() for evt in events],

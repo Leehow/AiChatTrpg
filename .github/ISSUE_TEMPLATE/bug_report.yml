@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a reproducible ChatRPG bug
+description: Report a reproducible AiChatTrpg bug
 title: "[Bug]: "
 labels: ["bug", "needs-triage"]
 body:

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="frontend/public/logo/chatrpg-logo-warm-transparent.png" alt="ChatRPG octopus logo" width="160" />
+  <img src="frontend/public/logo/chatrpg-logo-warm-transparent.png" alt="AiChatTrpg octopus logo" width="160" />
 </p>
 
-<h1 align="center">ChatRPG</h1>
+<h1 align="center">AiChatTrpg</h1>
 
 An open-source AI Game Master for tabletop RPGs. Bring your own LLM, point at a ruleset PDF and an adventure module, play.
 
@@ -11,7 +11,7 @@ An open-source AI Game Master for tabletop RPGs. Bring your own LLM, point at a 
 
 ## What it is
 
-ChatRPG runs a structured TRPG session driven by an LLM acting as Game Master. It implements:
+AiChatTrpg runs a structured TRPG session driven by an LLM acting as Game Master. It implements:
 
 - **Three-phase pipeline** (preprocess → generate → postprocess) with streaming output
 - **Zero function calling** — game state mutations via text markers parsed at end of turn
@@ -84,7 +84,7 @@ plaintext `auth.json` path is kept only for local bootstrap compatibility.
 
 ## Team Lead Mode (for contributors)
 
-ChatRPG uses **Codex 组长模式 / Team Lead Mode** for non-trivial work: Codex
+AiChatTrpg uses **Codex 组长模式 / Team Lead Mode** for non-trivial work: Codex
 plans, dispatches Claude Code workers (`runclaude` TTY, latest Opus), reviews
 diffs, validates, and reports. Workers operate under the marker
 `[CHATRPG_TEAM_LEAD_WORKER_V1]` and a structured scope/handoff contract.
@@ -115,7 +115,7 @@ books, or private campaign content into public issues.
 
 ## License
 
-Apache License 2.0. ChatRPG is free to use, modify, and distribute,
+Apache License 2.0. AiChatTrpg is free to use, modify, and distribute,
 including for commercial purposes, as long as redistribution follows the
 Apache-2.0 license terms. In particular, Apache-2.0 includes an explicit
 patent license and terminates that patent license for a party that files
@@ -123,7 +123,7 @@ patent litigation claiming the work infringes.
 
 ### A note on dependencies for commercial use
 
-The default PDF text-extraction backend in `requirements.txt` (PyMuPDF) is **AGPL-3.0**, which is incompatible with closed-source commercial use. If you plan to ship ChatRPG commercially without releasing your modifications, swap PyMuPDF for one of these:
+The default PDF text-extraction backend in `requirements.txt` (PyMuPDF) is **AGPL-3.0**, which is incompatible with closed-source commercial use. If you plan to ship AiChatTrpg commercially without releasing your modifications, swap PyMuPDF for one of these:
 
 - **[MinerU](https://github.com/opendatalab/MinerU)** — Apache 2.0 + additional terms. Free for commercial use unless your MAU > 100M or monthly revenue > USD 20M. If you offer it as an online service, you must visibly attribute MinerU.
 - **[pypdf](https://github.com/py-pdf/pypdf)** — BSD-3-Clause, no strings attached.

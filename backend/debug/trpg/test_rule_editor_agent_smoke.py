@@ -92,7 +92,7 @@ async def main() -> None:
     print(f"created draft {draft_id}")
 
     user_text = (
-        "请为我列出 ChatRPG 中 12 种规则包范式（rule package paradigms）"
+        "请为我列出 AiChatTrpg 中 12 种规则包范式（rule package paradigms）"
         "的名字和一句话解释。不要修改任何东西，只是讨论。"
     )
 

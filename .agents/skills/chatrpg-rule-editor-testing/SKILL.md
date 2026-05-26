@@ -1,13 +1,13 @@
 ---
 name: chatrpg-rule-editor-testing
-description: "Design, review, or run human-style long-flow tests for ChatRPG rule editor workflows: rule design agent, ruleset drafting, dice/check editor, character-field alignment, save/publish/versioning, target-rule repair, browser E2E evidence, and feedback collection. Use when the user asks for rule editor testing, ruleset workflow validation, natural-language rule creation tests, dice editor tests, or long-flow human simulation around rule authoring."
+description: "Design, review, or run human-style long-flow tests for AiChatTrpg rule editor workflows: rule design agent, ruleset drafting, dice/check editor, character-field alignment, save/publish/versioning, target-rule repair, browser E2E evidence, and feedback collection. Use when the user asks for rule editor testing, ruleset workflow validation, natural-language rule creation tests, dice editor tests, or long-flow human simulation around rule authoring."
 ---
 
-# ChatRPG Rule Editor Testing
+# AiChatTrpg Rule Editor Testing
 
 ## Overview
 
-Use this skill to design or assess realistic long-flow tests for the ChatRPG
+Use this skill to design or assess realistic long-flow tests for the AiChatTrpg
 rule editor. The goal is to prove that a normal user can create, repair, save,
 and reuse a playable ruleset through vague natural language, not that one
 engineered prompt can pass.

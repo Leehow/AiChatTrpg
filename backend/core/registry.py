@@ -1,7 +1,7 @@
 """Adapter registry — the open-core boundary.
 
 Open-source code in `agents/trpg/` only ever calls into adapters via this
-registry, never importing closed implementations directly. ChatRPG installs
+registry, never importing closed implementations directly. AiChatTrpg installs
 no-op or stub implementations at startup; ChatLab overrides them with the
 real closed-source services.
 """

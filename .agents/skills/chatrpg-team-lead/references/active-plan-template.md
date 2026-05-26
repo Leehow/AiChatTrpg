@@ -57,7 +57,7 @@ explicitly defers it.
 
 ## Next action
 
-<The single most important next step, concrete enough that a fresh ChatRPG
+<The single most important next step, concrete enough that a fresh AiChatTrpg
 worker prompt (`[CHATRPG_TEAM_LEAD_WORKER_V1]`) can be drafted from it.>
 ```
 

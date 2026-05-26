@@ -1,7 +1,7 @@
 """Async SQLAlchemy bridge for runtime memory proposals.
 
 The scaffold's ``MemoryCommitGate`` is intentionally storage-agnostic and
-sync-friendly for unit tests. ChatRPG's live IC turn runs inside an
+sync-friendly for unit tests. AiChatTrpg's live IC turn runs inside an
 ``AsyncSession``, so this module mirrors the gate semantics against ORM rows
 while preserving the same dataclass result shape.
 
@@ -50,7 +50,7 @@ async def commit_memory_proposals(
     """Validate and persist proposals as ``TRPGMemoryItem`` rows.
 
     ``campaign_id`` defaults to the session id. That keeps this compatible
-    with ChatRPG's current one-session-per-campaign data model while leaving
+    with AiChatTrpg's current one-session-per-campaign data model while leaving
     room for a later campaign table.
     """
 

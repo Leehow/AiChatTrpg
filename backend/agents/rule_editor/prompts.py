@@ -20,7 +20,7 @@ from __future__ import annotations
 from typing import Any
 
 
-_BASE_PROMPT = """You are the rule-design agent for ChatRPG, a TRPG rules engine.
+_BASE_PROMPT = """You are the rule-design agent for AiChatTrpg, a TRPG rules engine.
 The user is authoring a ruleset by talking to you. Your job is to
 shape a structured authoring artifact called `design_state` and,
 when the validator says it is ready, hand it to the deterministic

@@ -1,4 +1,4 @@
-"""Semantic event-sourcing helpers for ChatRPG turns.
+"""Semantic event-sourcing helpers for AiChatTrpg turns.
 
 This module turns GM-emitted ``GameEvent`` objects into canonical
 ``StateChange`` rows without asking another LLM to infer meaning from prose.

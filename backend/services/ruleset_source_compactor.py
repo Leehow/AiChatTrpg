@@ -2,7 +2,7 @@
 
 The upstream v6 parser expects a whole-book markdown view for stages 1-3.
 Large commercial rulebooks can exceed the local relay model's context window,
-so ChatRPG first turns an oversized source into a loss-conscious working
+so AiChatTrpg first turns an oversized source into a loss-conscious working
 source, then feeds that source to the copied v6 stages unchanged.
 """
 

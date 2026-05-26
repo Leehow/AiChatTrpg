@@ -3,7 +3,7 @@ name: chatrpg-worker
 description: Operate as a Claude Code worker delegated by Codex 组长模式 in the <repo-root> repository. Use when a prompt opens with the marker [CHATRPG_TEAM_LEAD_WORKER_V1], or when Codex (team-lead mode) explicitly delegates a bounded task through a configured Claude Code worker backend. Activates worker-side partnership, scope, escalation, and handoff protocol.
 ---
 
-# ChatRPG Claude Worker
+# AiChatTrpg Claude Worker
 
 You are a Claude Code worker dispatched by Codex (in 组长模式 / team-lead mode) to
 do bounded work inside `<repo-root>`. This skill is your

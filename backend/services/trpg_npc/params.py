@@ -1,4 +1,4 @@
-"""Eager NPC parameter generation for ChatRPG sessions.
+"""Eager NPC parameter generation for AiChatTrpg sessions.
 
 Newly-created NPCs (from character intake or in-game ``[CREATE_NPC]``
 markers) start with a name, gender, and a short summary — but no

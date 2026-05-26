@@ -523,7 +523,7 @@ export const ja: Record<MessageKey, string> = {
   diceModalRoll: "振る",
   diceModalSend: "送信",
 
-  loginTitle: "ChatRPG にサインイン",
+  loginTitle: "AiChatTrpg にサインイン",
   loginSubtitle: "ローカル管理者アカウント、またはテスト環境のアカウントを使用してください。",
   loginTab: "サインイン",
   loginUsername: "ユーザー名",
@@ -536,7 +536,7 @@ export const ja: Record<MessageKey, string> = {
   loginHint: "ローカル環境は引き続き auth.json を使います。ホストされたテスト環境は招待アカウントを使います。",
   registerTab: "登録",
   registerTitle: "テストアカウントを作成",
-  registerSubtitle: "招待コードでこの ChatRPG テスト環境に参加します。",
+  registerSubtitle: "招待コードでこの AiChatTrpg テスト環境に参加します。",
   registerName: "表示名",
   registerNamePlaceholder: "任意",
   registerInviteCode: "招待コード",

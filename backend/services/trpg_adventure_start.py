@@ -2,7 +2,7 @@
 
 ChatLab starts play by asking the player which playable unit (location,
 mission, or chapter) should be loaded, then writes that unit into active
-module memory before IC turns begin. ChatRPG keeps this lighter: one selected
+module memory before IC turns begin. AiChatTrpg keeps this lighter: one selected
 unit becomes the current scene, active module chapter, and optional initial NPC
 roster.
 """

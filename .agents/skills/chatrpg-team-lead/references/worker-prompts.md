@@ -1,6 +1,6 @@
-# ChatRPG Team Lead Worker Prompts
+# AiChatTrpg Team Lead Worker Prompts
 
-Use these templates when running ChatRPG work in 组长模式. Keep prompts in
+Use these templates when running AiChatTrpg work in 组长模式. Keep prompts in
 English for workers, and report decisions/results to the user in Chinese.
 
 Every Claude Code worker prompt must:
@@ -34,7 +34,7 @@ evaluator only sees conversation-visible evidence; goal conditions must
 require explicit handoff/validation evidence plus a stop bound:
 
 ```text
-/goal The assigned ChatRPG worker task is complete when:
+/goal The assigned AiChatTrpg worker task is complete when:
 1. the worker stayed within scope_own and did not touch scope_off;
 2. every requested item is completed or explicitly blocked with a reason;
 3. the handoff report exists at .tmp/team-lead/<expected-file>.md;

@@ -1,6 +1,6 @@
 # Marker header specification
 
-The activation marker for the ChatRPG worker skill is a fenced header block at
+The activation marker for the AiChatTrpg worker skill is a fenced header block at
 the top of the worker prompt. The marker has two parts: a single-token
 activation tag, and a structured key-value header.
 

@@ -1,4 +1,4 @@
-# ChatRPG Validation Matrix V0-V4
+# AiChatTrpg Validation Matrix V0-V4
 
 Every acceptance item should map to evidence. Use this as a shared vocabulary
 for lead plans, worker prompts, handoffs, and final reports.

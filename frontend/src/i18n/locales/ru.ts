@@ -524,7 +524,7 @@ export const ru: Record<MessageKey, string> = {
   diceModalRoll: "Бросить",
   diceModalSend: "Отправить",
 
-  loginTitle: "Вход в ChatRPG",
+  loginTitle: "Вход в AiChatTrpg",
   loginSubtitle: "Используйте локальный admin-аккаунт или аккаунт тестовой платформы.",
   loginTab: "Войти",
   loginUsername: "Логин",
@@ -537,7 +537,7 @@ export const ru: Record<MessageKey, string> = {
   loginHint: "Локальные установки всё ещё используют auth.json. Размещённые тесты используют приглашённые аккаунты.",
   registerTab: "Регистрация",
   registerTitle: "Создать тестовый аккаунт",
-  registerSubtitle: "Используйте инвайт-код для этой тестовой платформы ChatRPG.",
+  registerSubtitle: "Используйте инвайт-код для этой тестовой платформы AiChatTrpg.",
   registerName: "Отображаемое имя",
   registerNamePlaceholder: "Необязательно",
   registerInviteCode: "Инвайт-код",

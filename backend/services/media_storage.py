@@ -3,7 +3,7 @@
 The provider adapters in ``media_generation`` return either a remote URL or
 a base64 data URI. Embedding base64 blobs in JSON columns inflates rows by
 ~30% and turns simple session reads into multi-megabyte payloads, so any
-generated asset that ChatRPG wants to keep is materialised to disk here
+generated asset that AiChatTrpg wants to keep is materialised to disk here
 and the database stores the relative URL only.
 
 Files live under ``data/media/`` (image PNG/JPEG, audio MP3/WAV) and are

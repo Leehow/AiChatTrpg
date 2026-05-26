@@ -1,6 +1,6 @@
 """Bridge the existing live IC runner into authoritative state-change rows.
 
-The current live runner still receives framework markers, ChatRPG extension
+The current live runner still receives framework markers, AiChatTrpg extension
 markers, and optional structured events. This adapter turns those artifacts into
 StateChange objects and persists them as ``TRPGStateChange`` rows plus a
 ``TRPGWorldStateSnapshot``.

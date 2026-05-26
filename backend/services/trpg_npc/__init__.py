@@ -1,4 +1,4 @@
-"""ChatRPG NPC agent — single import surface for everything NPC-related.
+"""AiChatTrpg NPC agent — single import surface for everything NPC-related.
 
 Submodules:
 

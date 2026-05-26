@@ -1,6 +1,6 @@
 """Unified image and speech generation adapters.
 
-ChatRPG keeps chat models behind one LLM interface, but image generation and
+AiChatTrpg keeps chat models behind one LLM interface, but image generation and
 TTS are not truly OpenAI-compatible across providers. This module is the
 provider-aware media layer that higher-level TRPG features should call.
 

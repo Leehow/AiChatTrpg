@@ -1,4 +1,4 @@
 interface:
-  display_name: "ChatRPG Game Testing"
-  short_description: "Design human-style long-flow gameplay tests for ChatRPG"
+  display_name: "AiChatTrpg Game Testing"
+  short_description: "Design human-style long-flow gameplay tests for AiChatTrpg"
   default_prompt: "Use $chatrpg-game-testing to design or review a realistic long-flow gameplay test."

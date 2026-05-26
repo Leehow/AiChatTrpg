@@ -1,4 +1,4 @@
-"""ChatLab-compatible module parser adapter for ChatRPG."""
+"""ChatLab-compatible module parser adapter for AiChatTrpg."""
 
 from __future__ import annotations
 

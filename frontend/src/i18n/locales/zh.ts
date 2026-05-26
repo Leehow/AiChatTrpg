@@ -524,7 +524,7 @@ export const zh: Record<MessageKey, string> = {
   diceModalRoll: "投掷",
   diceModalSend: "发送",
 
-  loginTitle: "登录 ChatRPG",
+  loginTitle: "登录 AiChatTrpg",
   loginSubtitle: "使用本地管理员账号或测试平台账号。",
   loginTab: "登录",
   loginUsername: "用户名",
@@ -537,7 +537,7 @@ export const zh: Record<MessageKey, string> = {
   loginHint: "本地安装仍使用 auth.json；公开测试平台使用邀请账号。",
   registerTab: "注册",
   registerTitle: "创建测试账号",
-  registerSubtitle: "使用邀请码加入这个 ChatRPG 测试平台。",
+  registerSubtitle: "使用邀请码加入这个 AiChatTrpg 测试平台。",
   registerName: "显示名称",
   registerNamePlaceholder: "可选",
   registerInviteCode: "邀请码",

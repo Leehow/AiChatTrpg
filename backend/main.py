@@ -81,7 +81,7 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(
-        title="ChatRPG",
+        title="AiChatTrpg",
         description="Open-source AI Game Master for tabletop RPGs",
         version="0.1.0-alpha",
         lifespan=lifespan,

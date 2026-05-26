@@ -1,8 +1,8 @@
 """Compatibility shim for ChatLab rule_parser_v6 stages.
 
 ChatLab v6 imports ``TokenTracker`` and ``call_llm`` from its v4 parser.
-ChatRPG does not carry that whole parser, so this small adapter routes calls
-through ChatRPG's OpenAI-compatible compiler client.
+AiChatTrpg does not carry that whole parser, so this small adapter routes calls
+through AiChatTrpg's OpenAI-compatible compiler client.
 """
 
 from __future__ import annotations
