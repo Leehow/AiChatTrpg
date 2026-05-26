@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChatRPG SSE Event",
+  "description": "Discriminated union by `type` field.",
+  "discriminator": {
+    "propertyName": "type"
+  },
+  "oneOf": [
+    {
+      "description": "Top-of-turn provider metadata + per-turn structured-event re-emits.\n\nExamples include the model id, latency hints, and structured-event\npayloads forwarded mid-stream when the engine wants the client to\nrender a marker before the next chunk lands.",
+      "properties": {
+        "type": {
+          "const": "metadata",
+          "default": "metadata",
+          "title": "Type",
+          "type": "string"
+        },
+        "metadata": {
+          "title": "Metadata",
+          "type": "object"
+        }
+      },
+      "title": "SseMetadataEvent",
+      "type": "object"
+    },
+    {
+      "description": "One human-readable line of GM \"chain of thought\" surfaced for\ndebug. The frontend stitches consecutive lines into a chain block;\nthey are also persisted on the saved message under\n``metadata.thinking_steps`` so reload still shows the chain.",
+      "properties": {
+        "type": {
+          "const": "thinking",
+          "default": "thinking",
+          "title": "Type",
+          "type": "string"
+        },
+        "content": {
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "title": "SseThinkingEvent",
+      "type": "object"
+    },
+    {
+      "description": "A chunk of the GM's prose for the player. The client appends\nthese to the streaming bubble verbatim.",
+      "properties": {
+        "type": {
+          "const": "content",
+          "default": "content",
+          "title": "Type",
+          "type": "string"
+        },
+        "content": {
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "title": "SseContentEvent",
+      "type": "object"
+    },
+    {
+      "description": "A parsed in-stream marker (``[ROLL]``, ``[SET_SCENE]``,\n``[UPDATE_MEMORY]``, …). The ``marker`` payload mirrors the\nbackend's ``ParsedMarker`` dict: type, args, body.",
+      "properties": {
+        "type": {
+          "const": "marker",
+          "default": "marker",
+          "title": "Type",
+          "type": "string"
+        },
+        "marker": {
+          "title": "Marker",
+          "type": "object"
+        }
+      },
+      "title": "SseMarkerEvent",
+      "type": "object"
+    },
+    {
+      "description": "Out-of-band engine effect that doesn't belong inline in prose:\nauto-resolved pending checks, NPC asset queue summary, structured\nstate changes, etc. ``kind`` discriminates payload shape.",
+      "properties": {
+        "type": {
+          "const": "side_effect",
+          "default": "side_effect",
+          "title": "Type",
+          "type": "string"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "payload": {
+          "default": null,
+          "title": "Payload"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "SseSideEffectEvent",
+      "type": "object"
+    },
+    {
+      "description": "Stream completion. ``result`` carries the final summary the\nserver wants the client to surface — assistant text, diff summary,\ncounts, etc. Shape varies by stream (chat vs character creation\nvs adventure start) so it's typed loosely; the consumer keys on\n``type=='done'`` then reads what it needs.",
+      "properties": {
+        "type": {
+          "const": "done",
+          "default": "done",
+          "title": "Type",
+          "type": "string"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Result"
+        }
+      },
+      "title": "SseDoneEvent",
+      "type": "object"
+    },
+    {
+      "description": "Recoverable error inside a stream. The consumer can surface a\ntoast and keep reading subsequent events; a fatal error closes the\nSSE connection from the server side.",
+      "properties": {
+        "type": {
+          "const": "error",
+          "default": "error",
+          "title": "Type",
+          "type": "string"
+        },
+        "content": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Content"
+        },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "exc_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exc Type"
+        }
+      },
+      "title": "SseErrorEvent",
+      "type": "object"
+    },
+    {
+      "description": "Per-segment failure inside a multi-segment stream (TTS streaming\nis the main current consumer). Distinct from ``error`` because the\noverall stream may still complete successfully — just one segment\nfailed and the client should fall back.",
+      "properties": {
+        "type": {
+          "const": "segment_error",
+          "default": "segment_error",
+          "title": "Type",
+          "type": "string"
+        },
+        "error": {
+          "title": "Error",
+          "type": "string"
+        },
+        "segment": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Segment"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "title": "SseSegmentErrorEvent",
+      "type": "object"
+    }
+  ]
+}

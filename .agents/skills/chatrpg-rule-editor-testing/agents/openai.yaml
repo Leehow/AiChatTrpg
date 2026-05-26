@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatRPG Rule Editor Testing"
+  short_description: "Design human-style long-flow tests for the rule editor"
+  default_prompt: "Use $chatrpg-rule-editor-testing to design or review a realistic long-flow rule editor test."

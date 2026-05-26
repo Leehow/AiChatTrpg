@@ -1,0 +1,81 @@
+/* NPC presentation blocks — extracted from trpg-prose.css to keep that
+ * file under the project's 400-line cap. Imported from globals.css. */
+
+/* `[npc_card]` — NPC first-appearance heavy card. Portrait + name + role +
+ * appearance description. Visually distinct from prose so the player
+ * registers "new character introduced". */
+.trpg-prose .npc-card-block {
+  margin: 0.8em 0;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  background: var(--surface-2);
+  padding: 0.7em 0.9em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.trpg-prose .npc-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.trpg-prose .npc-card-portrait {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+.trpg-prose .npc-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  min-width: 0;
+}
+.trpg-prose .npc-card-badge {
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+.trpg-prose .npc-card-name {
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--text-1);
+}
+.trpg-prose .npc-card-role {
+  font-size: 0.85em;
+  color: var(--text-2);
+  opacity: 0.85;
+}
+.trpg-prose .npc-card-body {
+  font-size: 0.95em;
+  color: var(--text-1);
+  line-height: 1.5;
+}
+
+/* `[name_reveal]` — narrative moment when a hidden NPC's true name
+ * surfaces in-fiction. Light inline chip tinted with the speaker's
+ * color so it sits visually adjacent to that NPC's other appearances. */
+.trpg-prose .name-reveal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 0.1em 0.55em 0.15em;
+  margin: 0 0.15em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--speaker-color, var(--accent)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--speaker-color, var(--accent)) 35%, transparent);
+  color: var(--speaker-color, var(--accent-text));
+  font-size: 0.85em;
+  font-weight: 500;
+  white-space: nowrap;
+  vertical-align: 0.04em;
+}
+.trpg-prose .name-reveal-chip .name-reveal-name {
+  font-weight: 600;
+}

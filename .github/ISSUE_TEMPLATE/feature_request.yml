@@ -1,0 +1,51 @@
+name: Feature request
+description: Suggest an improvement or new capability
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ChatRPG is pre-alpha and local-first. Hosted test-platform requests are
+        welcome, but please separate product ideas from deployment assumptions.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Player experience
+        - Rule editor
+        - TRPG runtime
+        - Dice/check engine
+        - Ruleset/module parsing
+        - Provider integration
+        - Deployment/self-hosting
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What user need does this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed shape
+      description: Describe the smallest useful version.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: This request does not require private data, secrets, or copyrighted materials.
+          required: true

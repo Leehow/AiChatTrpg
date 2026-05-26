@@ -1,0 +1,63 @@
+{
+  "id": "d100_investigation_horror",
+  "name": "D100 Investigation Horror",
+  "summary": "Roll-under-skill investigation horror in the Call of Cthulhu lineage. Fragile investigators, sanity erosion, scene-driven mystery.",
+  "taxonomy": {
+    "genre": "horror",
+    "tone": "dread",
+    "complexity": "medium",
+    "era": "modern",
+    "setting_type": "investigation"
+  },
+  "slots_required": [
+    "core_loop",
+    "resolution_model",
+    "character_attributes",
+    "sanity_track",
+    "skills_catalog"
+  ],
+  "defaults": {
+    "core_loop": {
+      "summary": "Investigators follow leads, gather clues, and confront the unnatural. Combat is dangerous and avoidable; sanity erodes as truth is uncovered.",
+      "phases": ["lead", "investigation", "confrontation", "aftermath"],
+      "pacing": "mystery-paced"
+    },
+    "resolution_model": {
+      "mechanic": "d100 roll-under",
+      "dice": "1d100",
+      "success_thresholds": [
+        {"name": "regular", "rule": "roll <= skill"},
+        {"name": "hard", "rule": "roll <= skill / 2"},
+        {"name": "extreme", "rule": "roll <= skill / 5"},
+        {"name": "fumble", "rule": "roll == 100"}
+      ],
+      "notes": "Lower is better. Skills are 0-99 percentages."
+    },
+    "character_model": {
+      "archetypes": ["investigator", "scholar", "journalist", "agent"],
+      "attributes": [
+        {"id": "str", "name": "Strength"},
+        {"id": "dex", "name": "Dexterity"},
+        {"id": "int", "name": "Intelligence"},
+        {"id": "pow", "name": "Power"},
+        {"id": "edu", "name": "Education"},
+        {"id": "san", "name": "Sanity"}
+      ],
+      "derived_stats": [
+        {"id": "hp", "name": "Hit Points"},
+        {"id": "mp", "name": "Magic Points"}
+      ],
+      "progression_model": "skill-experience"
+    }
+  },
+  "keywords": [
+    "horror",
+    "investigation",
+    "mystery",
+    "sanity",
+    "d100",
+    "cthulhu",
+    "occult",
+    "investigator"
+  ]
+}

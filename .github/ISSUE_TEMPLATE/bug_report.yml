@@ -1,0 +1,80 @@
+name: Bug report
+description: Report a reproducible ChatRPG bug
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this. Please do not include secrets, private invite
+        codes, provider keys, copyrighted rulebooks, or private campaign data.
+        Security issues should follow SECURITY.md instead of a public issue.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Commit SHA, branch, or release tag.
+      placeholder: "main @ abc1234"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Backend/API
+        - Frontend/UI
+        - TRPG runtime
+        - Ruleset/module parsing
+        - Authentication/registration
+        - Deployment
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Use the smallest public-safe sample you can.
+      placeholder: |
+        1. Start backend with ...
+        2. Open ...
+        3. Click ...
+        4. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Public-safe logs or screenshots
+      description: Redact secrets, tokens, invite codes, private URLs, and copyrighted text.
+      render: shell
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I removed secrets, tokens, invite codes, and private campaign data.
+          required: true
+        - label: I am not reporting a security vulnerability in this public issue.
+          required: true

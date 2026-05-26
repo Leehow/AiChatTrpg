@@ -1,0 +1,97 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/.venv/
+backend/venv/
+.eggs/
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Secrets / certificates
+secrets/
+**/secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+# Auth credentials (auth.example.json is the template; auth.json holds real local creds)
+auth.json
+
+# Database runtime data
+backend/data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Alembic local artefacts
+backend/alembic.ini.local
+
+# Node / Vite
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+frontend/coverage/
+frontend/stats.html
+*.tsbuildinfo
+
+# Stale tsc emits next to TypeScript sources (tsconfig sets noEmit; ignore re-emits)
+frontend/vite.config.js
+frontend/vite.config.d.ts
+
+# Generated API clients and contracts artefacts
+# (Schema sources `contracts/openapi.json` and `contracts/sse_events.json` ARE committed.
+#  Generated TS clients are committed too so chatlab can sync without running codegen.)
+
+# IDE
+.vscode/
+.idea/
+.history/
+chatlab.code-workspace
+*.swp
+*.swo
+*~
+
+# Local/private project notes excluded from public releases
+x.md
+operator-notes/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Documentation and local reference material
+# Includes private/copyrighted ruleset PDFs, parsed JSON, examples, and review bundles.
+docs/
+
+# Local data / uploads
+/.tmp/
+backend/uploads/
+backend/storage/
+backend/tmp/
+
+# Build artefacts
+build/
+dist/
+
+# Local sync state
+.sync_cache/

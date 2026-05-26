@@ -1,0 +1,203 @@
+@import "tailwindcss";
+@import "./trpg-prose.css";
+@import "./trpg-npc-blocks.css";
+
+/* Bridge runtime CSS variables into Tailwind v4 tokens so utilities like
+   `bg-surface`, `text-accent` resolve dynamically when the theme changes. */
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-2: var(--border-2);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-text: var(--accent-text);
+  --color-secondary: var(--secondary);
+  --color-secondary-dim: var(--secondary-dim);
+  --color-user-bubble: var(--user-bubble);
+  --color-user-text: var(--user-text);
+  --color-gm-bubble: var(--gm-bubble);
+  --color-gm-text: var(--gm-text);
+  --color-input-bg: var(--input-bg);
+}
+
+/*
+ * Warm theme — "Sage + Terracotta" palette.
+ *
+ * Built on the principle (from Figma's terracotta UI guide and the
+ * CreativeBooster terracotta palette study) that terracotta works best paired
+ * with a neutral cream secondary and a single cool accent (sage green here)
+ * to break up the warmth. The previous palette was all-warm and the page
+ * read as "muddy peach" because the orange accent and peach bg fought each
+ * other.
+ *
+ * Terracotta is intentionally toned from #D97757 → #C66E4E (Pantone 7618 C)
+ * so it sits more comfortably against the cream bone bg.
+ */
+:root,
+[data-theme="warm"] {
+  --bg: #F5F0E6;        /* warm bone — neutral cream, not peach */
+  --surface: #FBF7EE;   /* paper white for elevated surfaces */
+  --surface-2: #EAE3D1; /* linen tier 2 — clearer separation */
+  --border: #DDD3C0;
+  --border-2: #BFB199;
+  --text: #2A2520;      /* warm near-black */
+  --text-2: #5C5048;
+  --text-3: #8E8275;
+  --accent: #C66E4E;    /* refined terracotta */
+  --accent-dim: #F0E2D5;
+  --accent-text: #8C421F;
+  --secondary: #8B9B7E; /* sage green for breathing room */
+  --secondary-dim: #DDE3D2;
+  --user-bubble: #2A2520; /* warm dark, not pure black */
+  --user-text: #FBF7EE;
+  --gm-bubble: #FBF7EE;
+  --gm-text: #2A2520;
+  --input-bg: #FBF7EE;
+  --shadow: rgba(60, 40, 25, 0.07);
+  --shadow-md: rgba(60, 40, 25, 0.14);
+}
+
+[data-theme="slate"] {
+  --bg: #16181C;
+  --surface: #1E2026;
+  --surface-2: #252830;
+  --border: #2E3240;
+  --border-2: #3A3F52;
+  --text: #E8EAF0;
+  --text-2: #8B90A8;
+  --text-3: #5C6080;
+  --accent: #7B8FD9;
+  --accent-dim: #1E2240;
+  --accent-text: #A0B0F0;
+  --secondary: #7BA88E; /* muted sage for dark mode */
+  --secondary-dim: #1F2A24;
+  --user-bubble: #3A4060;
+  --user-text: #E8EAF0;
+  --gm-bubble: #1E2026;
+  --gm-text: #E8EAF0;
+  --input-bg: #1E2026;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-md: rgba(0, 0, 0, 0.5);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-2);
+}
+
+/* Slide-in / fade animations used by setup flow + modals */
+@keyframes chatrpg-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes chatrpg-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.anim-fade-in {
+  animation: chatrpg-fade-in 0.3s ease;
+}
+.anim-slide-right {
+  animation: chatrpg-slide-right 0.25s ease;
+}
+
+@keyframes chatrpg-dot-bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Typewriter caret tacked onto streaming GM text. Soft 1s blink so the
+   reader can tell the stream is alive even when tokens pause. Mirrors the
+   chatlab `streaming-cursor` pattern. */
+@keyframes chatrpg-cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+.streaming-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--accent);
+  border-radius: 1px;
+  animation: chatrpg-cursor-blink 1s steps(2, end) infinite;
+}
+
+/* Floating in-game scene/time HUD. White frosted-glass + dashed border in
+   warm theme, dark frosted-glass in slate theme. Mirrors chatlab's
+   .trpg-scene-hud in TrpgSceneHud.vue. */
+.chatrpg-scene-hud {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px dashed rgba(148, 163, 184, 0.45);
+  color: #6b7280;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+[data-theme="slate"] .chatrpg-scene-hud {
+  background: rgba(17, 24, 39, 0.78);
+  border-color: rgba(148, 163, 184, 0.5);
+  color: #9ca3af;
+}
+.chatrpg-scene-hud-btn:hover {
+  background: rgba(148, 163, 184, 0.16);
+  color: #374151;
+}
+[data-theme="slate"] .chatrpg-scene-hud-btn:hover {
+  background: rgba(148, 163, 184, 0.22);
+  color: #e5e7eb;
+}

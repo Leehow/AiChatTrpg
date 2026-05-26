@@ -1,0 +1,142 @@
+"""Static voice catalogs and descriptive metadata per provider.
+
+Pure data; no behavior. Other modules import these constants to seed catalog
+voice lookups and provider capability hints.
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+OPENAI_TTS_VOICES = [
+    "alloy", "ash", "ballad", "coral", "echo", "fable", "nova",
+    "onyx", "sage", "shimmer", "verse", "marin", "cedar",
+]
+XAI_TTS_VOICES = ["eve", "ara", "rex", "sal", "leo", "una"]
+DASHSCOPE_TTS_VOICES = [
+    "Cherry", "Serena", "Ethan", "Chelsie", "Momo", "Vivian",
+    "Moon", "Maia", "Kai", "Nofish", "Bella", "Jennifer",
+    "Ryan", "Katerina", "Aiden", "Eldric Sage", "Mia", "Mochi",
+    "Bellona", "Vincent", "Bunny", "Neil", "Elias", "Arthur",
+    "Nini", "Seren", "Pip", "Stella", "Bodega", "Sonrisa",
+    "Dylan", "Eric",
+]
+GEMINI_TTS_VOICES = [
+    "Zephyr", "Puck", "Charon", "Kore", "Fenrir", "Leda", "Orus",
+    "Aoede", "Callirrhoe", "Autonoe", "Enceladus", "Iapetus",
+    "Umbriel", "Algieba", "Despina", "Erinome", "Algenib",
+    "Rasalgethi", "Laomedeia", "Achernar", "Alnilam", "Schedar",
+    "Gacrux", "Pulcherrima", "Achird", "Zubenelgenubi",
+    "Vindemiatrix", "Sadachbia", "Sadaltager", "Sulafat",
+]
+MINIMAX_TTS_VOICES = [
+    "English_expressive_narrator", "female-shaonv", "female-yujie",
+    "female-chengshu", "female-tianmei", "male-qn-qingse",
+    "male-qn-jingying", "male-qn-badao", "male-qn-daxuesheng",
+    "presenter_male", "presenter_female", "audiobook_male_1",
+    "audiobook_female_1", "Calm_Woman", "Young_Knight",
+    "Deep_Voice_Man", "Sweet_Girl",
+    "chatlab-rp-25925d1f", "chatlab-rp-26d59fc5",
+    "chatlab-rp-e97f60f9", "chatlab-rp-3745067b",
+    "chatlab-rp-fe6d404d", "chatlab-rp-acbd6a14",
+    "chatlab-rp-5031b687", "chatlab-rp-20e34cdd",
+    "chatlab-rp-1a0e260b", "chatlab-rp-10db0dd8",
+    "chatlab-rp-7baeb7cb", "chatlab-rp-9f67ee96",
+    "chatlab-rp-6cf303eb", "chatlab-rp-8009b953",
+    "chatlab-rp-6922d8df", "chatlab-rp-fee66a95",
+    "chatlab-rp-296ef640", "chatlab-rp-40365004",
+    "chatlab-rp-7a1af54b", "chatlab-rp-7413f058",
+    "chatlab-rp-bcc18060", "chatlab-rp-2e2d59ff",
+    "chatlab-rp-7709ba40", "chatlab-rp-0e958089",
+    "chatlab-rp-53f2d35b",
+]
+_XAI_TTS_VOICE_META: dict[str, dict[str, Any]] = {
+    "eve": {"name": "Eve", "description": "Energetic, upbeat"},
+    "ara": {"name": "Ara", "description": "Warm, friendly"},
+    "rex": {"name": "Rex", "description": "Confident, clear"},
+    "sal": {"name": "Sal", "description": "Smooth, balanced"},
+    "leo": {"name": "Leo", "description": "Authoritative, strong"},
+    "una": {"name": "Una", "description": "Multilingual"},
+}
+_GEMINI_TTS_VOICE_META: dict[str, dict[str, Any]] = {
+    "Zephyr": {"gender": "female", "description": "明亮清透；希望/精灵/清晨/友善旁白", "languages": ["多语言"]},
+    "Puck": {"gender": "male", "description": "活泼上扬；少年/伙伴/喜剧/热情冒险者", "languages": ["多语言"]},
+    "Charon": {"gender": "male", "description": "沉稳信息型；GM旁白/管家/学者/引导者", "languages": ["多语言"]},
+    "Kore": {"gender": "female", "description": "坚定清晰；可靠旁白/女战士/指挥官/审判", "languages": ["多语言"]},
+    "Fenrir": {"gender": "male", "description": "兴奋高能；狂热/爆发/斗士/冲动少年", "languages": ["多语言"]},
+    "Leda": {"gender": "female", "description": "青春灵动；少女/学徒/好奇/勇敢", "languages": ["多语言"]},
+    "Orus": {"gender": "male", "description": "坚实有压迫；骑士/军官/宣告/命令", "languages": ["多语言"]},
+    "Aoede": {"gender": "female", "description": "轻盈微风；吟游诗人/梦幻/轻松/空灵", "languages": ["多语言"]},
+    "Callirrhoe": {"gender": "female", "description": "随和亲近；酒馆老板/邻居/普通人/闲谈", "languages": ["多语言"]},
+    "Autonoe": {"gender": "female", "description": "明亮清晰；助手/开朗旁白/导览", "languages": ["多语言"]},
+    "Enceladus": {"gender": "male", "description": "气息感强；疲惫/低语/病弱/秘密", "languages": ["多语言"]},
+    "Iapetus": {"gender": "male", "description": "清晰理性；研究员/医生/调查员/技术员", "languages": ["多语言"]},
+    "Umbriel": {"gender": "male", "description": "随和自然；旅伴/普通市民/低调/朴素", "languages": ["多语言"]},
+    "Algieba": {"gender": "male", "description": "顺滑稳重；贵族/外交官/老练/温雅反派", "languages": ["多语言"]},
+    "Despina": {"gender": "female", "description": "顺滑柔和；治疗者/贵妇/安抚/温婉", "languages": ["多语言"]},
+    "Erinome": {"gender": "female", "description": "清晰干净；教师/秘书/记录员/理性说明", "languages": ["多语言"]},
+    "Algenib": {"gender": "male", "description": "沙砾粗粝；反派/佣兵/老兵/威胁", "languages": ["多语言"]},
+    "Rasalgethi": {"gender": "male", "description": "权威信息型；教授/广播员/裁判/军师", "languages": ["多语言"]},
+    "Laomedeia": {"gender": "female", "description": "上扬乐观；开朗同伴/主持/喜悦/鼓励", "languages": ["多语言"]},
+    "Achernar": {"gender": "female", "description": "柔软低缓；母亲/治愈/悲伤/安慰", "languages": ["多语言"]},
+    "Alnilam": {"gender": "male", "description": "坚实命令感；军官/守卫/硬派英雄/队长", "languages": ["多语言"]},
+    "Schedar": {"gender": "female", "description": "均衡平稳；通用旁白/冷静NPC/稳定克制", "languages": ["多语言"]},
+    "Gacrux": {"gender": "female", "description": "成熟沉着；导师/女王/长者/法官", "languages": ["多语言"]},
+    "Pulcherrima": {"gender": "female", "description": "前倾直接；记者/辩手/野心家/强势", "languages": ["多语言"]},
+    "Achird": {"gender": "male", "description": "友善亲切；店主/同伴/邻家男人/可靠", "languages": ["多语言"]},
+    "Zubenelgenubi": {"gender": "male", "description": "休闲松弛；酒保/混混/闲聊/街头消息源", "languages": ["多语言"]},
+    "Vindemiatrix": {"gender": "female", "description": "温柔细腻；照护者/恋人/安慰/柔声", "languages": ["多语言"]},
+    "Sadachbia": {"gender": "male", "description": "生动活跃；游侠/骗子/急智/说书人", "languages": ["多语言"]},
+    "Sadaltager": {"gender": "male", "description": "博学温和；贤者/教师/智者旁白/温和权威", "languages": ["多语言"]},
+    "Sulafat": {"gender": "female", "description": "温暖包容；护士/母性/温情旁白/安全感", "languages": ["多语言"]},
+}
+_MINIMAX_TTS_VOICE_META: dict[str, dict[str, Any]] = {
+    "English_expressive_narrator": {
+        "name": "English Expressive Narrator",
+        "gender": "female",
+        "description": "Expressive English narrator",
+        "languages": ["English"],
+    },
+    "female-shaonv": {"gender": "female", "description": "女-活泼少女(预设)", "languages": ["中文"]},
+    "female-yujie": {"gender": "female", "description": "女-知性御姐(预设)", "languages": ["中文"]},
+    "female-chengshu": {"gender": "female", "description": "女-稳重成熟(预设)", "languages": ["中文"]},
+    "female-tianmei": {"gender": "female", "description": "女-甜美可爱(预设)", "languages": ["中文"]},
+    "male-qn-qingse": {"gender": "male", "description": "男-青涩少年(预设)", "languages": ["中文"]},
+    "male-qn-jingying": {"gender": "male", "description": "男-精英青年(预设)", "languages": ["中文"]},
+    "male-qn-badao": {"gender": "male", "description": "男-霸道青年(预设)", "languages": ["中文"]},
+    "male-qn-daxuesheng": {"gender": "male", "description": "男-阳光大学生(预设)", "languages": ["中文"]},
+    "presenter_male": {"gender": "male", "description": "男性主持人(预设)", "languages": ["中文"]},
+    "presenter_female": {"gender": "female", "description": "女性主持人(预设)", "languages": ["中文"]},
+    "audiobook_male_1": {"gender": "male", "description": "有声书男声(预设)", "languages": ["中文"]},
+    "audiobook_female_1": {"gender": "female", "description": "有声书女声(预设)", "languages": ["中文"]},
+    "Calm_Woman": {"gender": "female", "description": "Calm & gentle", "languages": ["English"]},
+    "Young_Knight": {"gender": "male", "description": "Young knight", "languages": ["English"]},
+    "Deep_Voice_Man": {"gender": "male", "description": "Deep & rich", "languages": ["English"]},
+    "Sweet_Girl": {"gender": "female", "description": "Sweet girl", "languages": ["English"]},
+    "chatlab-rp-25925d1f": {"gender": "male", "description": "男-霸道总裁", "languages": ["中文"]},
+    "chatlab-rp-26d59fc5": {"gender": "male", "description": "男-阴险男主", "languages": ["中文"]},
+    "chatlab-rp-e97f60f9": {"gender": "male", "description": "男-温润君子", "languages": ["中文"]},
+    "chatlab-rp-3745067b": {"gender": "male", "description": "男-文弱书生", "languages": ["中文"]},
+    "chatlab-rp-fe6d404d": {"gender": "male", "description": "男-阳光少年", "languages": ["中文"]},
+    "chatlab-rp-acbd6a14": {"gender": "male", "description": "男-少年统帅", "languages": ["中文"]},
+    "chatlab-rp-5031b687": {"gender": "male", "description": "男-唠嗑大爷", "languages": ["中文"]},
+    "chatlab-rp-20e34cdd": {"gender": "male", "description": "男-得道高僧", "languages": ["中文"]},
+    "chatlab-rp-1a0e260b": {"gender": "male", "description": "男-小男孩(8-10岁)", "languages": ["中文"]},
+    "chatlab-rp-10db0dd8": {"gender": "male", "description": "男-低音威严老年", "languages": ["中文"]},
+    "chatlab-rp-7baeb7cb": {"gender": "male", "description": "男-傲慢刻薄老年", "languages": ["中文"]},
+    "chatlab-rp-9f67ee96": {"gender": "male", "description": "男-沧桑沙哑老年", "languages": ["中文"]},
+    "chatlab-rp-6cf303eb": {"gender": "male", "description": "男-淡然醇厚老年", "languages": ["中文"]},
+    "chatlab-rp-8009b953": {"gender": "female", "description": "女-冰山女王", "languages": ["中文"]},
+    "chatlab-rp-6922d8df": {"gender": "female", "description": "女-知性御姐", "languages": ["中文"]},
+    "chatlab-rp-fee66a95": {"gender": "female", "description": "女-俏皮公主", "languages": ["中文"]},
+    "chatlab-rp-296ef640": {"gender": "female", "description": "女-开朗妹妹", "languages": ["中文"]},
+    "chatlab-rp-40365004": {"gender": "female", "description": "女-软糯萝莉", "languages": ["中文"]},
+    "chatlab-rp-7a1af54b": {"gender": "female", "description": "女-纯情闺蜜", "languages": ["中文"]},
+    "chatlab-rp-7413f058": {"gender": "female", "description": "女-成熟女白领", "languages": ["中文"]},
+    "chatlab-rp-bcc18060": {"gender": "female", "description": "女-天真小女孩(3-5岁)", "languages": ["中文"]},
+    "chatlab-rp-2e2d59ff": {"gender": "female", "description": "女-威严太后老年", "languages": ["中文"]},
+    "chatlab-rp-7709ba40": {"gender": "female", "description": "女-恶毒阴狠老年", "languages": ["中文"]},
+    "chatlab-rp-0e958089": {"gender": "female", "description": "女-和蔼可亲老年", "languages": ["中文"]},
+    "chatlab-rp-53f2d35b": {"gender": "female", "description": "女-低音严肃老年", "languages": ["中文"]},
+}

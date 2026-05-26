@@ -1,0 +1,400 @@
+/* ---------------------------------------------------------------- *
+ * TRPG message prose — markdown body, dialogue spans, semantic blocks.
+ *
+ * `.trpg-prose` is the wrapper produced by the TrpgMessage component.
+ * All rules are scoped to it so they never leak into other UI surfaces.
+ * ---------------------------------------------------------------- */
+
+.trpg-prose {
+  font-size: 16px;
+  line-height: 1.75;
+  /* System font stack with explicit Chinese fallbacks. The chat body is the
+     one place the brand DM Sans hurts more than helps — DM Sans has no CJK
+     glyphs so Chinese drops to whatever generic sans the browser picks, and
+     that mix tends to look less consistent than letting the OS pair its
+     own Latin + CJK pair (San Francisco + PingFang SC on macOS, Segoe UI +
+     Microsoft YaHei on Windows). */
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI",
+    "Microsoft YaHei", "Noto Sans SC", Roboto, "Helvetica Neue", sans-serif;
+  /* Inherit from the surrounding bubble so user vs GM coloring works.
+     User bubbles set text-user-text (light on dark), GM bubbles set
+     text-gm-text (dark on light); a hard-coded var(--text) here would
+     paint user-bubble text the same dark page color and become invisible
+     against the dark user-bubble background. */
+  color: inherit;
+  word-break: break-word;
+}
+
+/* Block spacing — markdown wraps each line in <p>. */
+.trpg-prose > * + * { margin-top: 1em; }
+.trpg-prose p { margin: 0; }
+.trpg-prose p + p { margin-top: 1em; }
+
+.trpg-prose h1, .trpg-prose h2, .trpg-prose h3,
+.trpg-prose h4, .trpg-prose h5, .trpg-prose h6 {
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.25em;
+  margin-bottom: 0.4em;
+  color: var(--accent-text);
+}
+.trpg-prose h1 { font-size: 1.5em; }
+.trpg-prose h2 { font-size: 1.25em; }
+.trpg-prose h3 { font-size: 1.125em; }
+
+.trpg-prose strong { font-weight: 600; color: var(--accent-text); }
+.trpg-prose em { font-style: italic; }
+.trpg-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.trpg-prose a:hover { opacity: 0.8; }
+
+.trpg-prose ul, .trpg-prose ol {
+  padding-left: 1.5em;
+  margin: 0.875em 0;
+}
+.trpg-prose li { margin: 0.4em 0; padding-left: 0.25em; }
+.trpg-prose li > ul, .trpg-prose li > ol { margin: 0.4em 0; }
+
+.trpg-prose code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-size: 0.92em;
+  padding: 0.1em 0.35em;
+  background: var(--surface-2);
+  border-radius: 4px;
+}
+.trpg-prose pre {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8em 1em;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+.trpg-prose pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.trpg-prose blockquote {
+  border-left: 3px solid var(--border-2);
+  padding-left: 1em;
+  color: var(--text-2);
+  margin: 0.4em 0;
+}
+
+.trpg-prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1em 0;
+}
+
+.trpg-prose .table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0.6em 0;
+}
+.trpg-prose table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92em;
+}
+.trpg-prose th, .trpg-prose td {
+  padding: 0.45em 0.75em;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.trpg-prose th {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+.trpg-prose tr:last-child td { border-bottom: none; }
+
+.trpg-prose .katex-display {
+  margin: 0.6em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.trpg-prose .katex-error {
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ---------------------------------------------------------------- *
+ * Dialogue spans — `「quote」` colored by speaker.
+ * 18-color palette. Known NPCs receive a session-stable unique slot where
+ * possible; one-off speakers fall back to an FNV-1a hash.
+ * ---------------------------------------------------------------- */
+
+.trpg-prose .trpg-dialogue {
+  font-weight: 500;
+  position: relative;
+  transition: color 0.15s ease;
+}
+.trpg-prose .trpg-dialogue[data-speaker]::before {
+  content: attr(data-speaker);
+  font-size: 0.72em;
+  font-weight: 400;
+  vertical-align: super;
+  margin-right: 0.18em;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+.trpg-prose .trpg-dialogue[data-speaker-source="inferred"]::before { content: ""; margin: 0; }
+.trpg-prose .trpg-speaker-avatar {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  vertical-align: middle;
+  margin-right: 0.32em;
+  cursor: pointer;
+}
+.trpg-prose .trpg-speaker-avatar--silhouette {
+  background: #e5e7eb;
+  padding: 0.1em;
+  object-fit: contain;
+}
+[data-theme="slate"] .trpg-prose .trpg-speaker-avatar--silhouette {
+  background: #374151;
+}
+.trpg-prose .trpg-dialogue strong,
+.trpg-prose .trpg-dialogue b,
+.trpg-prose .trpg-dialogue em,
+.trpg-prose .trpg-dialogue i {
+  color: inherit;
+}
+/* `--speaker-color` is shared by `.trpg-dialogue` and `.trpg-name`. */
+.trpg-prose [data-speaker-type="unknown"] { --speaker-color: #0f766e; }
+.trpg-prose [data-speaker-type="pc"] { --speaker-color: #312e81; }
+.trpg-prose [data-speaker-type="voice"] { --speaker-color: #475569; }
+.trpg-prose [data-speaker-type="bystander"] { --speaker-color: #64748b; }
+
+.trpg-prose [data-speaker-type="npc"][data-color-idx="0"] { --speaker-color: #9f1239; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="1"] { --speaker-color: #b45309; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="2"] { --speaker-color: #4d7c0f; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="3"] { --speaker-color: #15803d; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="4"] { --speaker-color: #0d9488; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="5"] { --speaker-color: #0369a1; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="6"] { --speaker-color: #4338ca; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="7"] { --speaker-color: #7e22ce; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="8"] { --speaker-color: #a21caf; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="9"] { --speaker-color: #92400e; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="10"] { --speaker-color: #be123c; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="11"] { --speaker-color: #c2410c; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="12"] { --speaker-color: #65a30d; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="13"] { --speaker-color: #047857; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="14"] { --speaker-color: #0f766e; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="15"] { --speaker-color: #1d4ed8; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="16"] { --speaker-color: #6d28d9; }
+.trpg-prose [data-speaker-type="npc"][data-color-idx="17"] { --speaker-color: #be185d; }
+.trpg-prose [data-speaker-type="bystander"][data-color-idx="0"] { --speaker-color: #6b7280; }
+.trpg-prose [data-speaker-type="bystander"][data-color-idx="1"] { --speaker-color: #57534e; }
+.trpg-prose [data-speaker-type="bystander"][data-color-idx="2"] { --speaker-color: #71717a; }
+
+[data-theme="slate"] .trpg-prose [data-speaker-type="unknown"] { --speaker-color: #5eead4; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="pc"] { --speaker-color: #c7d2fe; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="voice"] { --speaker-color: #94a3b8; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="bystander"] { --speaker-color: #94a3b8; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="0"] { --speaker-color: #fb7185; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="1"] { --speaker-color: #fbbf24; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="2"] { --speaker-color: #a3e635; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="3"] { --speaker-color: #4ade80; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="4"] { --speaker-color: #2dd4bf; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="5"] { --speaker-color: #60a5fa; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="6"] { --speaker-color: #818cf8; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="7"] { --speaker-color: #c084fc; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="8"] { --speaker-color: #e879f9; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="9"] { --speaker-color: #fdba74; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="10"] { --speaker-color: #f43f5e; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="11"] { --speaker-color: #fb923c; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="12"] { --speaker-color: #bef264; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="13"] { --speaker-color: #34d399; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="14"] { --speaker-color: #5eead4; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="15"] { --speaker-color: #93c5fd; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="16"] { --speaker-color: #a78bfa; }
+[data-theme="slate"] .trpg-prose [data-speaker-type="npc"][data-color-idx="17"] { --speaker-color: #f472b6; }
+
+.trpg-prose .trpg-dialogue { color: var(--speaker-color); }
+.trpg-prose .trpg-dialogue[data-speaker-type="voice"] { font-style: italic; }
+.trpg-prose .trpg-name { color: var(--speaker-color); }
+
+/* ---------------------------------------------------------------- *
+ * Semantic blocks — visually distinct from prose.
+ * ---------------------------------------------------------------- */
+
+/* Dice block — collapsible mechanics view. Visually muted on purpose: this
+   is roll mechanics, not narrative, and should sit quietly in the margin
+   of the conversation. Matches chatlab's typography hierarchy. */
+.trpg-prose .dice-block {
+  margin: 0.5em 0;
+  border-left: 3px solid var(--border-2);
+  border-radius: 4px;
+  background: var(--surface-2);
+  font-size: 0.85em;
+  overflow: hidden;
+}
+.trpg-prose .dice-summary {
+  padding: 4px 10px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  color: var(--text-3);
+  font-size: 0.95em;
+}
+.trpg-prose .dice-summary::-webkit-details-marker { display: none; }
+.trpg-prose .dice-block[open] .dice-summary {
+  border-bottom: 1px solid var(--border);
+}
+.trpg-prose .dice-block[open] > *:not(.dice-summary) {
+  padding: 6px 10px;
+  color: var(--text-2);
+}
+
+.trpg-prose .ooc-block {
+  margin: 0.75em 0;
+  border-left: 3px solid #f59e0b;
+  border-radius: 4px;
+  background: rgba(245, 158, 11, 0.08);
+  padding: 8px 12px;
+  font-size: 0.9em;
+}
+.trpg-prose .ooc-label {
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #d97706;
+  margin-bottom: 4px;
+}
+.trpg-prose .ooc-content {
+  color: #92400e;
+  font-style: italic;
+}
+[data-theme="slate"] .trpg-prose .ooc-content { color: #fbbf24; }
+.trpg-prose .ooc-content > p { margin: 0; }
+.trpg-prose .ooc-content > p + p { margin-top: 0.3em; }
+
+.trpg-prose .debug-block {
+  margin: 0.75em 0;
+  border: 1px dashed #a855f7;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(168, 85, 247, 0.06),
+    rgba(168, 85, 247, 0.06) 6px,
+    rgba(168, 85, 247, 0.12) 6px,
+    rgba(168, 85, 247, 0.12) 12px
+  );
+  padding: 8px 12px;
+  font-size: 0.88em;
+}
+.trpg-prose .debug-label {
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9333ea;
+  margin-bottom: 4px;
+}
+.trpg-prose .debug-content {
+  color: #581c87;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.94em;
+}
+[data-theme="slate"] .trpg-prose .debug-content { color: #e9d5ff; }
+[data-theme="slate"] .trpg-prose .debug-block {
+  border-color: #c084fc;
+}
+
+.trpg-prose .thought-block {
+  margin: 0.5em 0;
+  border-left: 3px solid #c4b5fd;
+  background: rgba(196, 181, 253, 0.08);
+  border-radius: 0 6px 6px 0;
+  padding: 0.4em 0.8em;
+  font-style: italic;
+  color: var(--text-2);
+}
+
+.trpg-prose .sign-block {
+  margin: 0.7em 0;
+  background: #1e293b;
+  color: #f1f5f9;
+  border-radius: 4px;
+  padding: 0.7em 1em;
+  text-align: center;
+  font-family: "Caveat", "Kalam", cursive;
+  font-size: 1.15em;
+  letter-spacing: 0.04em;
+  transform: rotate(-0.5deg);
+}
+
+.trpg-prose .note-block {
+  margin: 0.7em 0;
+  background: #fef9c3;
+  color: #422006;
+  border-radius: 2px;
+  padding: 0.7em 1em;
+  font-family: "Georgia", "Songti SC", serif;
+  font-size: 0.95em;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+  transform: rotate(-0.3deg);
+}
+
+.trpg-prose .screen-block {
+  margin: 0.6em 0;
+  background: #0f172a;
+  color: #5eead4;
+  border-radius: 6px;
+  padding: 0.7em 1em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-size: 0.9em;
+  border: 1px solid #1e293b;
+}
+
+.trpg-prose .memory-block {
+  margin: 0.6em 0;
+  background: rgba(180, 130, 80, 0.08);
+  border-radius: 6px;
+  padding: 0.6em 0.9em;
+  font-family: "Georgia", "Songti SC", serif;
+  font-style: italic;
+  color: var(--text-2);
+  filter: sepia(0.15);
+}
+
+.trpg-prose .semantic-label {
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 0.2em;
+}
+.trpg-prose .sign-block .semantic-label,
+.trpg-prose .note-block .semantic-label { display: none; }
+
+.trpg-prose .btn-create-role {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45em 1em;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: opacity 0.15s ease;
+}
+.trpg-prose .btn-create-role:hover { opacity: 0.85; }

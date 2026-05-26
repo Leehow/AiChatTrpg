@@ -1,0 +1,60 @@
+{
+  "id": "cyberpunk_job_based",
+  "name": "Cyberpunk Job-Based",
+  "summary": "Near-future cyberpunk runners take jobs from fixers. Jobs structure the play loop: legwork, run, payoff.",
+  "taxonomy": {
+    "genre": "cyberpunk",
+    "tone": "noir",
+    "complexity": "medium",
+    "era": "near-future",
+    "setting_type": "job"
+  },
+  "slots_required": [
+    "core_loop",
+    "resolution_model",
+    "character_attributes",
+    "job_procedure",
+    "gear_catalog"
+  ],
+  "defaults": {
+    "core_loop": {
+      "summary": "Fixer offers a job. Crew does legwork, executes the run, deals with consequences, splits the payoff.",
+      "phases": ["fixer", "legwork", "run", "fallout", "downtime"],
+      "pacing": "job-paced"
+    },
+    "resolution_model": {
+      "mechanic": "d10 dice pool vs DV",
+      "dice": "Nd10, count successes",
+      "success_thresholds": [
+        {"name": "success", "rule": "successes >= DV"},
+        {"name": "glitch", "rule": "more 1s than successes"}
+      ],
+      "notes": "Dice pool from attribute + skill. Net successes drive narrative effect."
+    },
+    "character_model": {
+      "archetypes": ["netrunner", "solo", "fixer", "techie", "face"],
+      "attributes": [
+        {"id": "bod", "name": "Body"},
+        {"id": "rea", "name": "Reaction"},
+        {"id": "log", "name": "Logic"},
+        {"id": "int", "name": "Intuition"},
+        {"id": "cha", "name": "Charisma"}
+      ],
+      "derived_stats": [
+        {"id": "hp", "name": "Hit Points"},
+        {"id": "rep", "name": "Reputation"}
+      ],
+      "progression_model": "karma-spend"
+    }
+  },
+  "keywords": [
+    "cyberpunk",
+    "runner",
+    "fixer",
+    "job",
+    "noir",
+    "near-future",
+    "netrunner",
+    "shadowrun"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "d20_heroic_adventure",
+  "name": "D20 Heroic Adventure",
+  "summary": "Classic d20-vs-DC heroic fantasy or sci-fi adventure. Levelled characters, ability scores, action economy, tactical combat with hit points.",
+  "taxonomy": {
+    "genre": "fantasy",
+    "tone": "heroic",
+    "complexity": "medium",
+    "era": "classical",
+    "setting_type": "adventure"
+  },
+  "slots_required": [
+    "core_loop",
+    "resolution_model",
+    "character_attributes",
+    "combat_procedure",
+    "skills_catalog"
+  ],
+  "defaults": {
+    "core_loop": {
+      "summary": "Adventurers pursue a goal through scenes of exploration, social interaction, and combat. GM frames challenges; players declare actions; checks resolve uncertainty; characters advance.",
+      "phases": ["exploration", "interaction", "combat", "rest"],
+      "pacing": "scene-paced"
+    },
+    "resolution_model": {
+      "mechanic": "d20 vs DC",
+      "dice": "1d20 + mod",
+      "success_thresholds": [
+        {"name": "success", "rule": "total >= DC"},
+        {"name": "critical", "rule": "natural 20"},
+        {"name": "fumble", "rule": "natural 1"}
+      ],
+      "notes": "Higher is better. DC scales with challenge."
+    },
+    "character_model": {
+      "archetypes": ["fighter", "rogue", "spellcaster", "cleric"],
+      "attributes": [
+        {"id": "str", "name": "Strength"},
+        {"id": "dex", "name": "Dexterity"},
+        {"id": "con", "name": "Constitution"},
+        {"id": "int", "name": "Intelligence"},
+        {"id": "wis", "name": "Wisdom"},
+        {"id": "cha", "name": "Charisma"}
+      ],
+      "derived_stats": [
+        {"id": "hp", "name": "Hit Points"},
+        {"id": "ac", "name": "Armor Class"}
+      ],
+      "progression_model": "level-based"
+    }
+  },
+  "keywords": [
+    "d20",
+    "level",
+    "hero",
+    "heroic",
+    "adventure",
+    "fantasy",
+    "dungeon",
+    "class",
+    "ability score"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "traditional_fantasy_adventure",
+  "name": "Traditional Fantasy Adventure",
+  "summary": "Old-school fantasy adventure with light rules, exploration focus, and dungeons. Less tactical than d20, more procedural.",
+  "taxonomy": {
+    "genre": "fantasy",
+    "tone": "classic",
+    "complexity": "low",
+    "era": "medieval",
+    "setting_type": "exploration"
+  },
+  "slots_required": [
+    "core_loop",
+    "resolution_model",
+    "character_attributes",
+    "exploration_procedure",
+    "treasure_catalog"
+  ],
+  "defaults": {
+    "core_loop": {
+      "summary": "Party explores a region or dungeon, manages resources, negotiates or fights threats, and returns with treasure.",
+      "phases": ["town", "travel", "explore", "encounter", "return"],
+      "pacing": "turn-and-round"
+    },
+    "resolution_model": {
+      "mechanic": "d20 roll-over target",
+      "dice": "1d20",
+      "success_thresholds": [
+        {"name": "success", "rule": "roll >= target"}
+      ],
+      "notes": "Targets are short tables (saves, attacks). Skills are loose."
+    },
+    "character_model": {
+      "archetypes": ["fighter", "thief", "magic-user", "cleric"],
+      "attributes": [
+        {"id": "str", "name": "Strength"},
+        {"id": "dex", "name": "Dexterity"},
+        {"id": "con", "name": "Constitution"},
+        {"id": "int", "name": "Intelligence"},
+        {"id": "wis", "name": "Wisdom"},
+        {"id": "cha", "name": "Charisma"}
+      ],
+      "derived_stats": [
+        {"id": "hp", "name": "Hit Points"},
+        {"id": "ac", "name": "Armor Class"}
+      ],
+      "progression_model": "xp-and-level"
+    }
+  },
+  "keywords": [
+    "fantasy",
+    "old-school",
+    "osr",
+    "classic",
+    "dungeon",
+    "exploration",
+    "medieval",
+    "treasure"
+  ]
+}

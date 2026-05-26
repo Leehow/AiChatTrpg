@@ -1,0 +1,79 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: chatrpg-test-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: chatrpg
+      POSTGRES_USER: chatrpg
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chatrpg -d chatrpg"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./app
+      dockerfile: deploy/test-platform/backend.Dockerfile
+    container_name: chatrpg-test-backend
+    restart: unless-stopped
+    env_file:
+      - ./secrets/backend.env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8013
+      DATABASE_URL: postgresql+asyncpg://chatrpg:${POSTGRES_PASSWORD}@db:5432/chatrpg
+      AUTH_FILE: /run/secrets/chatrpg_auth_json
+      FRONTEND_URL: https://test.aichattrpg.com
+      REGISTRATION_ENABLED: "true"
+      REGISTRATION_INVITE_REQUIRED: "true"
+    secrets:
+      - chatrpg_auth_json
+    volumes:
+      - backend-data:/app/backend/data
+      - backend-uploads:/app/backend/uploads
+      - backend-storage:/app/backend/storage
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8013/api/health >/dev/null"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+
+  frontend:
+    build:
+      context: ./app
+      dockerfile: deploy/test-platform/frontend.Dockerfile
+    container_name: chatrpg-test-frontend
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  edge:
+    image: nginx:1.27-alpine
+    container_name: chatrpg-edge-web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./edge.nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - /opt/chatrpg-site/site:/usr/share/nginx/html/site:ro
+    depends_on:
+      - frontend
+
+secrets:
+  chatrpg_auth_json:
+    file: ./secrets/auth.json
+
+volumes:
+  db-data:
+  backend-data:
+  backend-uploads:
+  backend-storage:

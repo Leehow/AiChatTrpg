@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatRPG Team Lead"
+  short_description: "Lead-mode coordination for ChatRPG"
+  default_prompt: "Use $chatrpg-team-lead to plan, delegate, review, and validate this ChatRPG task."

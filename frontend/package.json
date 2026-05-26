@@ -1,0 +1,35 @@
+{
+  "name": "chatrpg-frontend",
+  "private": true,
+  "version": "0.1.0-alpha",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 3013 --strictPort",
+    "gen:api": "openapi-ts -i ../contracts/openapi.json -o src/api/generated -c @hey-api/client-fetch"
+  },
+  "dependencies": {
+    "@3d-dice/dice-box": "^1.1.4",
+    "@hey-api/client-fetch": "^0.13.1",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "@tanstack/react-query": "^5.62.7",
+    "katex": "^0.16.45",
+    "marked": "^18.0.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-virtuoso": "^4.18.6"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.64.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/katex": "^0.16.8",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^8.0.0"
+  }
+}

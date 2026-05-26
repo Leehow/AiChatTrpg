@@ -1,0 +1,61 @@
+{
+  "id": "mission_anomaly_containment",
+  "name": "Mission Anomaly Containment",
+  "summary": "Modern paranormal containment: agents deploy on a mission, investigate anomalies, and recover or neutralise threats. Operational vibe, cell-based teams.",
+  "taxonomy": {
+    "genre": "paranormal",
+    "tone": "clinical",
+    "complexity": "medium",
+    "era": "modern",
+    "setting_type": "operation"
+  },
+  "slots_required": [
+    "core_loop",
+    "resolution_model",
+    "character_attributes",
+    "containment_procedure",
+    "anomaly_catalog"
+  ],
+  "defaults": {
+    "core_loop": {
+      "summary": "Briefing assigns a mission. Cell deploys, investigates the anomaly, applies containment procedures, debriefs.",
+      "phases": ["briefing", "deploy", "investigate", "contain", "debrief"],
+      "pacing": "mission-paced"
+    },
+    "resolution_model": {
+      "mechanic": "d100 roll-under skill",
+      "dice": "1d100",
+      "success_thresholds": [
+        {"name": "success", "rule": "roll <= skill"},
+        {"name": "critical", "rule": "roll <= skill / 5"},
+        {"name": "fumble", "rule": "roll >= 96"}
+      ],
+      "notes": "Skills mix combat, science, and protocol. Equipment grants bonuses."
+    },
+    "character_model": {
+      "archetypes": ["field agent", "researcher", "specialist", "handler"],
+      "attributes": [
+        {"id": "fit", "name": "Fitness"},
+        {"id": "ref", "name": "Reflexes"},
+        {"id": "int", "name": "Intellect"},
+        {"id": "wil", "name": "Will"},
+        {"id": "rap", "name": "Rapport"}
+      ],
+      "derived_stats": [
+        {"id": "hp", "name": "Hit Points"},
+        {"id": "stress", "name": "Stress"}
+      ],
+      "progression_model": "operation-experience"
+    }
+  },
+  "keywords": [
+    "anomaly",
+    "containment",
+    "paranormal",
+    "mission",
+    "agent",
+    "scp",
+    "operation",
+    "cell"
+  ]
+}
