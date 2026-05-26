@@ -11,6 +11,11 @@ separate from the V1 local-first product scope in `CLAUDE.md`.
 - Public domains: `https://aichattrpg.com/`,
   `https://www.aichattrpg.com/`, and the registration-gated test platform at
   `https://test.aichattrpg.com/`.
+- Public source mirror: `https://github.com/Leehow/AiChatTrpg`. This is a
+  clean-history public mirror. The private development remote
+  `Leehow/chatrpg` remains private and should not be made public with full
+  history unless the user explicitly approves a history rewrite/publication
+  plan.
 - Registrar / DNS: the domain is registered at NameSilo and fronted by
   Cloudflare. Keep exact origin addresses in private operator notes, not in
   public repository docs.
@@ -28,12 +33,17 @@ separate from the V1 local-first product scope in `CLAUDE.md`.
   this can break friend VPN links.
 - Test-platform secrets and generated admin/invite credentials live only on the
   server. Do not commit, paste, or copy those values into docs or prompts.
+- Branding state: source code, docs, OpenAPI title, frontend title, and the
+  public GitHub mirror were renamed from `ChatRPG` to `AiChatTrpg` on
+  2026-05-26. The live Tokyo deployment may still show the old branding until
+  the web/test stack is redeployed; validate the live titles before claiming
+  production has been updated.
 - Useful validation: from a clean network path, both public HTTPS URLs should
-  load the title `AiChatTrpg - Open-source AI-GM TRPG engine`. On the user's Mac,
-  Surge may otherwise route this domain through the Tokyo proxy path and hit
-  stale DNS/fake-IP state; keep these public domains on `DIRECT` in private
-  local proxy config when needed. The test platform should load the title
-  `AiChatTrpg`, expose
+  load the title `AiChatTrpg - Open-source AI-GM TRPG engine` after the
+  branding deploy. On the user's Mac, Surge may otherwise route this domain
+  through the Tokyo proxy path and hit stale DNS/fake-IP state; keep these
+  public domains on `DIRECT` in private local proxy config when needed. The
+  test platform should load the title `AiChatTrpg` after redeploy, expose
   `/api/auth/registration-status`, and require invite-code registration.
 - Old Gemini relay note: the obsolete Cloudflare Workers named `gemini` and
   `geminii` were removed during this setup. Do not assume a public Gemini
