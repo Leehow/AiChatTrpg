@@ -4,7 +4,12 @@
 
 <h1 align="center">AiChatTrpg</h1>
 
-An open-source AI Game Master for tabletop RPGs. Bring your own LLM, point at a ruleset PDF and an adventure module, play.
+<p align="center">
+  <a href="README.md">English</a> | <a href="README.zh-Hans.md">简体中文</a>
+</p>
+
+An open-source AI Game Master for tabletop RPGs. Bring your own LLM, point at a
+ruleset PDF and an adventure module, and play.
 
 > **Status**: Pre-alpha. Active development. Local-first self-hosting is the
 > default; invited-account hosted test deployments are experimental.
