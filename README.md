@@ -45,7 +45,7 @@ private campaign archives, API keys, or copyrighted books.
 
 ## Tech stack
 
-**Backend**: Python 3.11+, FastAPI, SQLAlchemy, PostgreSQL, pgvector not required.
+**Backend**: Python 3.11 - 3.13.14, FastAPI, SQLAlchemy, PostgreSQL, pgvector not required.
 
 **Frontend**: Vite 8, React 19, TypeScript 5.7+, Tailwind CSS 4, TanStack Query, `@microsoft/fetch-event-source` for SSE-with-POST, `marked` + KaTeX for markdown/math, `react-virtuoso` for chat virtualization, `@3d-dice/dice-box` for dice visuals, `@hey-api/openapi-ts` + `@hey-api/client-fetch` for API client codegen.
 
